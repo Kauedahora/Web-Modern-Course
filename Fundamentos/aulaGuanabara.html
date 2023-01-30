@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros passos com DOM</title>
+    <style>
+        body{
+            background: rgb(68, 125, 199);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>iniciando estudos com DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>aprendendo a usar o <strong>DOM</strong> em JavaScript.</p>
+    <div id="msg">Clique em mim</div>
+    <script>
+        var corpo = window.document.body;
+        var p1 = window.document.getElementsByTagName("p")[1]; //consigo selecionar mais de um objeto da mesma tag
+
+        /* p1.style.color = "blue"; //transformar o p1 para azul
+        corpo.style.background = "black"; //transformar o site em preto
+        var d = window.document.getElementById("msg"); //selecionando a div pelo id
+        d.style.background = "green"; //posso fazer a div ficar com a cor verde */
+
+        //d.innerText = "Estou aguardando..."; //posso modificar o conteudo dela por inner text
+
+       /* window.document.getElementById("msg").innerText = "Olá"; //outro tipo de modificação mas se torna muito grande
+        var d = window.document.getElementsByName("msg")[0];
+        d.innerText = "Olá!"; */
+
+        /* document.write(p1.innerText); //mostra na tela o paragrafo 1 mas sem os child, sem formatação
+        window.alert(p1.innerHTML); //utilizando uma janela de alerta com inner html pega inteiro, com as childs e tags
+        window.alert(p1.innerText); //utiliza janela de alerta com inner text que pega o texto
+        window.document.write("está escrito assim: " + p1.innerText); */ //escrever na tela
+
+        var d = window.document.querySelector("div#msg"); //div é representada por # e toda classe por .
+        d.style.background = "blue";    
+    </script>
+</body>
+</html>

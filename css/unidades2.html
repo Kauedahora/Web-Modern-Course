@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        .fora {
+            position: relative;
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%;    /* dependendo das posições que iremos trabalhar, utilizar porcento pode ter comportamentos diferentes */
+            position: static; /* irá usar apenas o espaço do conteudo */
+            position: relative; /* tb irá usar apenas o espaço do conteudo */
+            position: absolute; /* conteudo + padding */
+            position: fixed;    /* irá usar o tamanho do viewport e não pela div no qual a div dentro está relacionada */
+        }
+    </style>
+</head>
+<body>
+    <div class="fora">
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>

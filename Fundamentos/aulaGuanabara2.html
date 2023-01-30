@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#area{
+            font: normal 20pt Arial; /* altera a fonte */
+            background: rgb(42, 139, 42); /* altera a cor do texto */
+            color: white; /* altera a cor do texto */
+            width: 200px; /* define a largura */
+            height: 200px; /* define a altura */
+            line-height: 200px; /* alinha a altura */
+            text-align: center; /* alinha o texto no centro */
+        }
+    </style>
+</head>
+<body>
+    <div id="area"> <!-- div id="area" onclick="clicar()" onmouseenter="entrar()" onmouseout="sair()" desse jeito criei uma div id com o nome area e dependendo do evento, faz uma função diferente mas se torna mt poluido pois possui mt codigo-->
+        Interaja...
+    </div>
+    <script>
+        var area = window.document.getElementById("area") //criei uma variavel area que recebe o elemento por Id area do documento html
+        
+        //leva o evento para ouvir e um segundo argumento a ser chamado sempre que o evento descrito for acionado
+        area.addEventListener("click", clicar); //trata a ligação entre html e js
+        area.addEventListener("mouseenter", entrar); //quando houver o evento do mouse entrar na minha div, este método ira acionar o evento entrar da função entrar()
+        area.addEventListener("mouseout", sair); 
+
+        function clicar(){   //nesta função, a variavel area que criei recebendo o elemento Id area irá alterar a div "Interaja" por clicou quando for clicado e também mudará a cor do fundo para red
+            area.innerText = "Clicou!";
+            area.style.background = "red"; //Quando eu clicar o fundo ficará vermelho
+        };
+        function entrar(){
+            area.innerText = "Entrou!";
+            area.style.background = "purple"; //quando eu entrar com o mouse, o fundo ficará roxo
+        };
+        function sair(){
+            area.innerText = "Sair";
+            area.style.background = "green"; //quando eu sair o fundo ficará verde
+        };
+    </script>
+</body>
+</html>

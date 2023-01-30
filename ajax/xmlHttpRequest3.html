@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XMLHttpRequest #03</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+
+  <body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+      function ajax(config) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(config.metodo, config.url, true);
+
+        xhr.onreadystatechange = (e) => {
+          // toda vez que a propriedade readystate(quando o status) for modificada
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              config.sucesso(xhr.responseXML);
+            } else if (xhr.status >= 400) {
+              config.erro({
+                codigo: xhr.status,
+                texto: xhr.statusText,
+              });
+            }
+          }
+        };
+
+        xhr.send();
+      }
+
+      ajax({
+        url: "dados/estados.xml",
+        metodo: "get",
+        sucesso(resposta) {
+          const estados = resposta.getElementsByTagName("estado"); // Converti a const estados p/array, chamei o reduce p/transformar o array em um único elemento(string), está string terá o acumulador (html que quero gerar) formados por elementos do tipo li com o nome de cada um dos estados
+          const itens = Array.from(estados).reduce(
+            // // inicialmente o meu reduce começa com uma string vazia e para cada interação ele adiciona um <li>.
+            (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`,
+            ""
+          );
+          document.body.insertAdjacentHTML("beforeend", `<ul>${itens}</ul>`); // // antes do body terminar, eu coloco a <ul> com todos os itens que fiz na função reduce
+        },
+        erro(e) {
+          const msg = document.createTextNode(`${e.codigo}: ${e.texto}`);
+          document.body.appendChild(msg);
+        },
+      });
+    </script>
+  </body>
+</html>
